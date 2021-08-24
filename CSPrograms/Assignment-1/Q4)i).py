@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
     print("Original")
     print(arr)
-    print("Revered")
+    print("Reversed")
     print(arr2)
 
 
