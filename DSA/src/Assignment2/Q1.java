@@ -133,6 +133,109 @@ class LinkedList
         }
         current_beh.next = null;
     }
+    
+    public void delAt(int pos)
+    {
+        if(head == null)
+        {
+            System.out.println("List is empty");
+            return;
+        }
+        Node current = head;
+        int t = 0, len = 0;
+        while(current.next != null)
+        {
+           current = current.next;
+           len++;
+        }
+        len++;
+        System.out.println("Size of list is " + len);
+        current = head;
+        if(pos > len)
+        {
+            System.out.println("Index Out of Range");
+            return;
+        }
+        Node current_beh = new Node();
+        for(int i = 1; i < pos; i++)
+        {
+            current_beh = current;
+            current = current.next;
+        }
+        current_beh.next = current.next;
+    }
+    
+    public void addBef(int x, int pos)
+    {
+        Node newNode = new Node();
+        newNode.data = x;
+        if(head == null)
+        {
+            head = newNode;
+            return;
+        }
+        Node current = head;
+        int t = 0, len = 0;
+        while(current.next != null)
+        {
+           current = current.next;
+           len++;
+        }
+        len++;
+        System.out.println("Size of list is " + len);
+        current = head;
+        if(pos > len)
+        {
+            System.out.println("Index Out of Range");
+            return;
+        }
+        Node current_beh = new Node();
+        for(int i = 1; i < pos; i++)
+        {
+            current_beh = current;
+            current = current.next;
+        }
+        current_beh.next = newNode;
+        newNode.next = current;
+        if(pos == 1)
+        {
+            addAtBeg(x);
+        }
+    }
+    
+    public void addAft(int x, int pos)
+    {
+        Node newNode = new Node();
+        newNode.data = x;
+        if(head == null)
+        {
+            head = newNode;
+            return;
+        }
+        Node current = head;
+        int t = 0, len = 0;
+        while(current.next != null)
+        {
+           current = current.next;
+           len++;
+        }
+        len++;
+        System.out.println("Size of list is " + len);
+        current = head;
+        if(pos > len)
+        {
+            System.out.println("Index Out of Range");
+            return;
+        }
+        Node current_beh = new Node();
+        for(int i = 0; i < pos; i++)//STARTS FROM 0 POINTS TO ONE AFTER POS ENTERED
+        {
+            current_beh = current;
+            current = current.next;
+        }
+        current_beh.next = newNode;
+        newNode.next = current;
+    }  
 }
 
 public class Q1 
@@ -178,6 +281,15 @@ public class Q1
                 int x = Sc.nextInt();
                 System.out.println("Enter the position at which it has to be entered");
                 int pos = Sc.nextInt();
+                list.addBef(x, pos);
+            }
+            else if(c == 4)
+            {
+                System.out.println("Enter value to be entered after position x");
+                int x = Sc.nextInt();
+                System.out.println("Enter the position at which it has to be entered");
+                int pos = Sc.nextInt();
+                list.addAft(x, pos);
             }
             else if(c == 5)
             {
@@ -188,6 +300,12 @@ public class Q1
             {
                 System.out.println("Node from end deleted.");
                 list.delEnd();
+            }
+            else if(c == 7)
+            {
+                System.out.println("Enter position of node to be deleted.");
+                int pos = Sc.nextInt();
+                list.delAt(pos);
             }
             else if(c == 8)
             {
