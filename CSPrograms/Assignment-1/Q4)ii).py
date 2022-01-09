@@ -77,4 +77,3 @@ if __name__ == "__main__":
     else:
         mul_matrix_logical(row1, row2, col1, col2)
         mul_matrix_np(row1, row2, col1, col2)
-        

@@ -235,11 +235,114 @@ class LinkedList
         }
         current_beh.next = newNode;
         newNode.next = current;
-    }  
+    } 
+    
+    public void deleteRep(int x)
+    {
+        Node current = head;
+        Node prev = null;
+        int occ = 0;
+        //checking if key is not head or values after it
+        while(current != null && current.data == x)
+        {
+            head = current.next;
+            current = head;
+            occ++;
+        }
+        while(current.next != null)
+        {
+            while(current != null && current.data != x)
+            {
+                prev = current;
+                current = current.next;
+            }
+            //reached the end of the list or key isnt present anymore
+            if(current == null)
+            {
+                System.out.println("No of occurences = " + occ);
+                return;
+            }
+            prev.next = current.next;
+            occ++;
+            //System.out.println("current.data = " + current.data);
+            current = prev.next;
+        }
+        System.out.println("No of occurences = " + occ);
+    }
+    
+    public int sizeList()
+    {
+        int size = 0;
+        Node current = head;
+        if(head == null)
+        {
+            return size;
+        }
+        else
+        {
+            while(current.next != null)
+            {
+                size++;
+                current = current.next;
+            }
+            size++;
+        }
+        return size;
+    }
+    
+    public int middleLink()
+    {
+        Node current = head;
+        int size = sizeList();
+        System.out.println("Size of linked list is " + size);
+        if(size == 0)
+        {
+            System.out.println("List is empty.");
+            return -1;
+        }
+        else if(size % 2 == 0)
+        {
+            int n = size/2;
+            //System.out.println("n = " + n);
+            for(int i = 1; i < n; i++)
+            {
+                current = current.next;
+            }
+            current = current.next;
+            return current.data;
+        }
+        else
+        {
+            int n = size/2;
+            //System.out.println("n = " + n);
+            for(int i = 1; i <= n; i++)
+            {
+                current = current.next;
+            }
+            return current.data;
+        }
+    }
+    
+    public void reverseList()
+    {
+        Node nextNode = null;
+        Node current = head;
+        Node prev = null;
+        while(current.next != null)
+        {
+            nextNode = current.next;//copy of next
+            current.next = prev;//creates the reversal link
+            prev = current;//moving ahead for prev
+            current = nextNode;//moving ahead in the list
+        }
+        current.next = prev;//for last element
+        prev = current;
+        head = prev;
+    }
 }
 
-public class Q1 
-        
+
+public class Q1      
 {
     public static void main(String args[])
     {
@@ -255,10 +358,20 @@ public class Q1
                              Press 7.Deletion of node at pos x
                              Press 8.Search for a node and display its position from head
                              Press 9.Display list
-                             Press 10.To Exit
+                             Press 10.Count occurences of a number and delete it % repetitions
+                             Press 11.Find middle of LinkedList
+                             Press 12.Size of linked list
+                             Press 13.Reverse a linked list
+                             Press 14.Reverse to a point
+                             Press 15.To Exit
                              """;
-        System.out.println(message);
-        int c = Sc.nextInt();
+        int c = -1;
+        list.addAtEnd(1);
+        list.addAtEnd(2);
+        list.addAtEnd(1);
+        list.addAtEnd(2);
+        list.addAtEnd(1);
+        list.addAtEnd(3);
         while(c != 0)
         {   
             System.out.println(message);
@@ -319,9 +432,49 @@ public class Q1
             }
             else if(c == 10)
             {
+                System.out.println("Enter key:  ");
+                int x = Sc.nextInt();
+                System.out.println("List before key deletion:   ");
+                list.display();
+                list.deleteRep(x);
+                System.out.println("List after key deletion:   ");
+                list.display();
+            }
+            else if(c == 11)
+            {
+                System.out.println("Middle");
+                int middle = list.middleLink();
+                if(middle == -1)
+                {
+                    ;
+                }
+                else
+                {
+                    System.out.println("The middle of linked list is the element " + middle);
+                }
+            }
+            else if(c == 12)
+            {
+                int size = list.sizeList();
+                System.out.println("Size of linked list is " + size);
+            }
+            else if(c == 13)
+            {
+                System.out.println("List before reversal");
+                list.display();
+                list.reverseList();
+                System.out.println("List after reversal");
+                list.display();
+            }
+            else if(c == 15)
+            {
                 System.out.println("Exit");
                 
                 return;
+            }
+            else if(c == -1)
+            {
+                ;
             }
             else
             {

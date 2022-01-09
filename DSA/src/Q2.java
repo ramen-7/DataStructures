@@ -71,7 +71,7 @@ public class Q2
         }
     }
     
-    public int[][] addSparse(int arr[][], int arr2[][], int r, int c)
+    /*public int[][] addSparse(int arr[][], int arr2[][], int r, int c)
     {
         int r1 = arr.length;
         int r2 = arr2.length;
@@ -79,9 +79,10 @@ public class Q2
         int added[][] = new int[r3][3];
         for(int i= 0; i < r3; i++)
         {
-            
-        }        
-    }
+            ;
+        }
+        return arr;
+    }*/
     
     public int[][] toNormal(int arr[][], int r, int c)
     {

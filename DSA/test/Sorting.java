@@ -18,13 +18,18 @@ public class Sorting
         for(int i = 0; i<l; i++)
         {
             int key = arr[i];
+            System.out.println("key1 = "+ key);
             int j = i-1;
             while(j >= 0 && arr[j] > key)
             {
-                arr[j+1] = arr[j];
-                j = j-1;
+                System.out.println("arr[j+1] =  " + arr[j+1] + "arr[j] = " + arr[j]);
+                arr[j+1] = arr[j];//copying values 
+                j--;
             }
-            arr[j+1] = key;
+            displayArray(arr);
+            arr[j+1] = key;           
+            displayArray(arr);
+            System.out.println("---");
         }
     }
     
@@ -67,11 +72,11 @@ public class Sorting
         }
     }
     
-    public void quickSort(int arr[])
+    /*public void quickSort(int arr[])
     {
         int l = arr.length;
         System.o
-    }
+    }*/
     
     public void displayArray(int arr[])
     {
@@ -115,6 +120,15 @@ public class Sorting
             obj.insertionSort(arr);
             obj.displayArray(arr);
         }
+        /*Random r = new Random();
+        int low = 10;
+        int high = 100;
+        
+        for(int i = 1; i <= 17*17; i++)
+        {
+            int result = r.nextInt(high-low) + low;
+            System.out.print(result + " ");
+        }  */
     }
     
 }

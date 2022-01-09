@@ -4,7 +4,7 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-public class DSA
+public class TwoSum
 {
     static Scanner Sc = new Scanner(System.in);
     public float[][] roundRobin(float bt[], float at[], float tq, int n)
@@ -18,17 +18,17 @@ public class DSA
         }
         while(true)
         {
-            boolean done = true;           
+            boolean done = true;
             for(int i = 0; i < n; i++)
             {
                 //System.out.println("Hello");
-                if((at[i] <= t) && (rem_bt[i] > tq))
+                if((at[i] <= t) && rem_bt[i] > tq)
                 {
                     done = false;
                     t += tq;
                     rem_bt[i] -= tq;
                 }
-                else if((at[i] <= t) && rem_bt[i] <= tq && rem_bt[i] > 0)//last cycle
+                else if(at[i] <= t && rem_bt[i] <= tq && rem_bt[i]>0)//last cycle
                 {
                     t += rem_bt[i];
                     rem_bt[i] = 0;
@@ -65,15 +65,17 @@ public class DSA
         float CT[] = new float[n];
         float WT[] = new float[n];
         float TAT[] = new float[n];
-        DSA obj = new DSA();
+        TwoSum obj = new TwoSum();
         CTWT = obj.roundRobin(BT, AT, tq, n);
         float avgtat = 0;
         float avgwt = 0;
         for(int i = 0; i < n; i++)
         {
             CT[i] = CTWT[i][0];
+            //System.out.println("CT " + i + " is " + CT[i]);
             TAT[i] = CT[i] - AT[i];
             WT[i] = TAT[i] - BT[i];
+            //System.out.println("TAT " + i + " is " + TAT[i]);
             avgtat += TAT[i];
             avgwt += WT[i];
         }
