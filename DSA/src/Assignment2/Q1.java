@@ -328,16 +328,18 @@ class LinkedList
         Node nextNode = null;
         Node current = head;
         Node prev = null;
-        while(current.next != null)
+        while(current != null)
         {
+            System.out.println("current = " + current.data);
             nextNode = current.next;//copy of next
             current.next = prev;//creates the reversal link
             prev = current;//moving ahead for prev
             current = nextNode;//moving ahead in the list
         }
-        current.next = prev;//for last element
-        prev = current;
+        //current.next = prev;//for last element
+        //prev = current;
         head = prev;
+        System.out.println("head = " + head);
     }
 }
 
@@ -366,12 +368,12 @@ public class Q1
                              Press 15.To Exit
                              """;
         int c = -1;
-        list.addAtEnd(1);
+        /*list.addAtEnd(1);
         list.addAtEnd(2);
         list.addAtEnd(1);
         list.addAtEnd(2);
         list.addAtEnd(1);
-        list.addAtEnd(3);
+        list.addAtEnd(3);*/
         while(c != 0)
         {   
             System.out.println(message);
